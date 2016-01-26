@@ -11,13 +11,13 @@ def welcome():
     print("Welcome to hangman!")
     print("What would you like to do?")
 
-
 def menu():
     print(" \n--------------------------------------\n ")
     print("Menu:")
     choice = input(print('[1] Start game with random category '
                          '\n[2] Start game with custom category '
-                         '\n[3] View record \n  ')).lower()
+                         '\n[3] View record'
+                         '\n[4] Exit  ')).lower()
     if choice=='1':
         play_game('building')
         #File I/O will go here, there will be a file with a list of pre set words, read into a list, randomly choose
@@ -28,7 +28,10 @@ def menu():
     if choice=='3':
         record = associated_files.SaveGame('')
         record.show_save_file()
+    if choice=='4':
+        exit()
     else:
+        print('That is not a valid choice.')
         menu()
         #File I/O will go here - record when a game is won and lost to a file and read it back in a formatted view
 #def custom_game():

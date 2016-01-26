@@ -14,4 +14,4 @@ class SaveGame:
             print(line)
         f.close()
 
-class RandomCategory
+#class RandomCategory

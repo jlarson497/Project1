@@ -27,7 +27,7 @@ class WordList:
                   "Going back to the menu")
 
 
-
+    #this method makes a random number based on the length of the list brought in and uses it to select a random word
     def choose_word(self):
         upper = len(self.total_list)
         rand_num = random.randrange(0, upper)
