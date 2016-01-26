@@ -19,8 +19,12 @@ class WordList:
         words = resp.json()
         #exception handling for custom category - ideally, won't allow you to choose a word with no
         #related words -- not working 100%
-        for word in words['hasParts'][0:200]:
-            self.total_list.append(word)
+        try:
+            for word in words['hasParts'][0:200]:
+                self.total_list.append(word)
+        except KeyError:
+            print("There are not enough related words, please choose something more general.\n"
+                  "Going back to the menu")
 
 
 

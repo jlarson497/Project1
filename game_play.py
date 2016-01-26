@@ -1,7 +1,8 @@
 #the game table encapsulates all the different methods and properties needed to play the game of hangman
 import Words
 
-class GameTable():
+
+class GameTable:
     challenge_word = ""
     hidden_string = []
     list_to_display = []
@@ -14,8 +15,11 @@ class GameTable():
     def start_game(self):
         list = Words.WordList(self.chosen_word)
         list.makeList()
-        final_word = list.choose_word()
-        return final_word
+        if len(Words.WordList.total_list)==0:
+            return 0
+        else:
+            final_word = list.choose_word()
+            return final_word
 
     def create_hidden_string(self):  #initialized the hidden word list based on the randomly generated wored
         final_word = self.start_game()
@@ -43,12 +47,14 @@ class GameTable():
                 del self.hidden_string[letter_index]
                 self.list_to_display.insert(letter_index, letter)
                 self.hidden_string.insert(letter_index, '_')
+                print('\nNice one!\n')
                 self.update_display_string() #updates the display string and prints it
                 print("Number of incorrect guesses: " + str(self.number_of_incorrect_guesses))#show number of incorrect guesses
                 return False
             except ValueError:  #Catch error if guess is not in the list
-                print("Wrong!  Try again")
+                print(" \nWrong!  Try again \n")
                 self.number_of_incorrect_guesses += 1
+                self.update_display_string()
                 print("Number of incorrect guesses: " + str(self.number_of_incorrect_guesses))#show number of incorrect guesses
                 return False
 
