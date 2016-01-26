@@ -4,12 +4,14 @@ import json
 import requests
 import random
 
+
 class WordList:
 
     total_list = []
 
     def __init__(self, category):
         self.category = category
+
 
     def makeList(self):
         url = "https://wordsapiv1.p.mashape.com/words/{cat}/hasParts".format(cat =self.category)#url string for the call

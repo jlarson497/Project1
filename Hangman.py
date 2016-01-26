@@ -1,5 +1,6 @@
 #This is a hangman game.  It pulls a word from a dictionary API and then gives the user so many guesses based on
 #the difficulty.
+#-Author- Joseph Larson
 
 import json
 import requests
@@ -7,17 +8,20 @@ import Words
 import game_play
 import associated_files
 
+
 def welcome():
     print("Welcome to hangman!")
     print("What would you like to do?")
 
+
 def menu():
     print(" \n--------------------------------------\n ")
     print("Menu:")
-    choice = input(print('[1] Start game with random category '
+    choice = input('[1] Start game with random category '
                          '\n[2] Start game with custom category '
                          '\n[3] View record'
-                         '\n[4] Exit  ')).lower()
+                         '\n[4] Exit'
+                         '\n: ')
     if choice=='1':
         play_game('building')
         #File I/O will go here, there will be a file with a list of pre set words, read into a list, randomly choose
@@ -33,7 +37,6 @@ def menu():
     else:
         print('That is not a valid choice.')
         menu()
-        #File I/O will go here - record when a game is won and lost to a file and read it back in a formatted view
 #def custom_game():
 #        while True:
 #            try:
@@ -42,6 +45,8 @@ def menu():
 #            except ValueError:
 #
 #                 continue
+
+
 def play_game(chosen_word):
     game_table = game_play.GameTable(chosen_word) #instantiate a game table
     if game_table.start_game() == 0:#start the game
